@@ -12,3 +12,4 @@ SET release_date = '1800';
 
 
 SELECT * FROM albums WHERE artist = 'Michael Jackson';
+
