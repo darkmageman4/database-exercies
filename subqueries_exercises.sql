@@ -1,21 +1,21 @@
 USE employees;
 
-SELECT * FROM employees WHERE emp_no = 101010;
-
-SELECT * FROM employees WHERE emp_no = 101010 IN (
-    SELECT emp_no FROM employees WHERE hire_date = true);
-
 SELECT *
 FROM employees
-WHERE emp_no IN (
-    SELECT emp_no
-    FROM employees
-);
+WHERE hire_date IN ( SELECT hire_date
+          FROM employees
+          WHERE emp_no = '101010');
 
-SELECT first_name, last_name, birth_date, emp_no
+
+SELECT title
+FROM titles t
+WHERE emp_no IN (SELECT emp_no
+    FROM employees
+    WHERE first_name = 'Aamod');
+
+SELECT first_name, last_name
 FROM employees
-WHERE emp_no IN (
-    SELECT emp_no
+WHERE gender IN (SELECT *
     FROM dept_manager
-)
-LIMIT 10;
+    WHERE gender = 'f'
+    )
